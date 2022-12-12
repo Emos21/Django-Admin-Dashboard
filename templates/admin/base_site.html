@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% comment %} {% load i18n  eatn_tags static %} {% endcomment %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ title }} | {% trans "Happy App Admin Panel " %}{% endblock %}
+
+
+{% block custom_main%}
+{% block branding %}
+    <h1 id="site-name">{% trans "Happy App Admin Panel" %}</h1>
+{% endblock %}
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+

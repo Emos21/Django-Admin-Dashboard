@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}Happy Admin Panel{% endblock %}
+{% block content %}
+<main>
+    <div class="box">
+        <div class="inner-box">
+            <div class="carousel">
+                <div class="images-wrapper">
+                    <img src="{% static 'assets/login_img.png' %}" class="image img-1 show" alt="" />
+                </div>
+            </div>
+
+            <div class="forms-wrap">
+
+                <form id="login-user" action="" autocomplete="off" class="sign-in-form" method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="actual-form">
+                        <div class="input-wrap">
+                            <input type="text" class="input-field" name="username" autocomplete="off" required />
+                            <label for="username">User Name</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="password" class="input-field" id="form_input" autocomplete="off"
+                                name="password" id="password" required />
+                            <label for="password" id="form_label">Password</label>
+                        </div>
+
+                        <input type="submit" value="Sign In" class="sign-btn" />
+
+                        <p class="text">
+                            Forgotten your password or you login datails?
+                            <a href="#">Get help</a> signing in
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

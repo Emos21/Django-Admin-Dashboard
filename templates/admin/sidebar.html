@@ -1,0 +1,57 @@
+{% load i18n static %}
+
+<div class="sidebar">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+  -->
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+                CT
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+                Creative Tim
+            </a>
+        </div>
+        <ul class="nav">
+            <li class="active ">
+                <a href="./dashboard.html">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+
+            {% if not is_popup %}
+            {% block userlinks %}
+            {% if site_url %}
+            <li>
+                <a href="{{ site_url }}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>{% translate 'View site' %}</p>
+                </a>
+            </li>
+            {% endif %}
+
+            {% if user.has_usable_password %}
+            <li>
+                <a href="{% url 'admin:password_change' %}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>{% translate 'Change password' %}</p>
+                </a>
+            </li>
+            {% endif %}
+
+            <li>
+                <a href="{% url 'admin:password_change' %}">
+                    <i class="tim-icons icon-atom"></i>
+                    <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">{% translate 'Log out' %}</button>
+                    </form>
+                </a>
+            </li>
+            {% endblock %}
+            {% endif %}
+        </ul>
+    </div>
+</div>
